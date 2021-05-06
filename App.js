@@ -18,8 +18,6 @@ import { Ionicons, MaterialIcons, AntDesign } from "@expo/vector-icons"
 export default function App() {
   const [task, setTask] = useState([]);
   const [newTask, setNewTask] = useState('')
-  const [completedTask, setNewTaskComplet] = useState([])
-
 
   async function addTask() {
     if (newTask === "") { return };
@@ -35,10 +33,6 @@ export default function App() {
     setNewTask('')
 
     Keyboard.dismiss()
-  }
-
-  async function completedTaskMarked(item) {
-    
   }
 
   async function removeTask(item) {
@@ -69,8 +63,7 @@ export default function App() {
     async function loadData() {
       const tasks = await AsyncStorage.getItem("tasks")
       if (tasks) {
-        console.log(tasks)
-        setTask(JSON.parse(task));
+        setTask(JSON.parse(tasks));
       }
     }
     loadData()
